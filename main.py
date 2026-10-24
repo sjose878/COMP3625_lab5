@@ -107,3 +107,5 @@ print(f'Best x values found: {result.x}')
 #           Best value: -8.01080076 so it decreases risk of diabetes
 
 # 4) A pure hill-climbing search would not be ideal here. Do you know why?
+# The function of decision_entropy is not smooth. That is because you can have multiple weight combinations that lead to a certain amount of women in each group. This leads to the 
+# landscape of the function having lots of flat areas where hill-climbing would get stuck.
