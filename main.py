@@ -84,9 +84,26 @@ print(f'Best x values found: {result.x}')
 
 # 2) what effect does b have in the classification?
 # If b is increased, there's a higher chance for the patient to be classified as being at risk
-# whi;e if b is decreased, there's a higher change for the patient to be classified as being not at risk.
+# while if b is decreased, there's a higher change for the patient to be classified as being not at risk.
 
 # 3) what does the model tell us about the relationship between the clinical measurements and diabetes? Which measurements contibute to risk of diabetes, and which reduce it?
-
+# In this model, a positive measurement means an increase in diabetes risk, while a negative measurement means a decrease in diabetes risk.
+# 
+#     1. Number of times pregnant
+#           Best value: -34.28481442 so it strongly decreases risk of diabetes
+#     2. Plasma glucose concentration a 2 hours in an oral glucose tolerance test: 
+#           Best value: 2.97328449 so it increases risk of diabetes
+#     3. Diastolic blood pressure (mm Hg)
+#           Best value: 3.02316677 so it increases risk of diabetes
+#     4. Triceps skin fold thickness (mm)
+#           Best value: 3.86057954 so it increases risk of diabetes
+#     5. 2-Hour serum insulin (mu U/ml)
+#           Best value: 10.14589807 so it strongly increases risk of diabetes
+#     6. Body mass index (weight in kg/(height in m)^2)
+#           Best value: -6.04523307 so it decreases risk of diabetes
+#     7. Diabetes pedigree function
+#           Best value: -7 so it decreases risk of diabetes
+#     8. Age (years)
+#           Best value: -8.01080076 so it decreases risk of diabetes
 
 # 4) A pure hill-climbing search would not be ideal here. Do you know why?
