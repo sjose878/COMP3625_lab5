@@ -27,13 +27,10 @@ def linear_decision(w: np.array) -> np.array:
     :param w: array of weights and bias. Should be length-9: [w1, w2... w8, b]
     :return: numpy array of predictions for each case in X
     """
-    linear_decision_threshold = 0
 
     linear_decision_threshold = X @ w[0:8] + w[8]
 
     at_risk = linear_decision_threshold > 0
-
-    
 
     return np.array(at_risk)
     # your code here
@@ -41,10 +38,13 @@ def linear_decision(w: np.array) -> np.array:
 # param w: one of the split groups
 # param total: total number of patients in dataset
 # Formula: H(V) = -Σk *P(vk)log2P(vk) from slide 18
-def calc_entropy(group: np.array, total: int) -> float:
-    count = len(group)
-    count_inverse = total - count
-    return -((count/total)*np.log2(count/total) + (count_inverse/total)*np.log2(count_inverse/total))
+def calc_entropy(group: np.array) -> float:
+    # count = len(group)
+    positives = np.sum(group == 'tested_positive')
+    negatives = np.sum(group == 'tested_negative')
+    total = len(group)
+    # count_inverse = total - count
+    return -((positives/total)*np.log2(positives/total) + (negatives/total)*np.log2(negatives/total))
 
 # write a function that computes the entropy of patient classes in the two groups created by the linear decision threshold
 def decision_entropy(w: np.array) -> float:
@@ -62,7 +62,7 @@ def decision_entropy(w: np.array) -> float:
     n_at_risk = len(group_at_risk)
     n_no_risk = len(group_no_risk)
     n_total = n_at_risk + n_no_risk 
-    return (n_at_risk/n_total*calc_entropy(group_at_risk, n_total)) + (n_no_risk/n_total*calc_entropy(group_no_risk, n_total))
+    return (n_at_risk/n_total*calc_entropy(group_at_risk)) + (n_no_risk/n_total*calc_entropy(group_no_risk))
 
 # write a search that finds the best (entropy-minimizing) weights and bias terms
 # YOUR CODE HERE
@@ -70,8 +70,10 @@ weights_and_bias = [1,2,3,4,5,-6,-7, -8,0.5]
 # print(linear_decision(weights_and_bias))
 print(f'Entropy with arbitrary weights and bias: {decision_entropy(weights_and_bias)}')
 
-#result = minimize(decision_entropy, x0=weights_and_bias, method='Powell',bounds=[(-1,1))])
-#print(result)
+baseline = calc_entropy(Y)
+print(f'Baseline entropy: {baseline}')
+result = minimize(decision_entropy, x0=weights_and_bias, method='Powell')
+print(result)
 
 
 # ___Reflection questions:___
