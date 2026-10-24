@@ -36,14 +36,17 @@ def linear_decision(w: np.array) -> np.array:
     # your code here
 
 # param w: one of the split groups
-# param total: total number of patients in dataset
 # Formula: H(V) = -Σk *P(vk)log2P(vk) from slide 18
 def calc_entropy(group: np.array) -> float:
-    # count = len(group)
     positives = np.sum(group == 'tested_positive')
     negatives = np.sum(group == 'tested_negative')
     total = len(group)
-    # count_inverse = total - count
+
+    if (positives == 0): #so log(0) doesnt break anything
+        return -((negatives/total)*np.log2(negatives/total))
+    elif (negatives == 0):
+        return -((positives/total)*np.log2(positives/total))
+
     return -((positives/total)*np.log2(positives/total) + (negatives/total)*np.log2(negatives/total))
 
 # write a function that computes the entropy of patient classes in the two groups created by the linear decision threshold
