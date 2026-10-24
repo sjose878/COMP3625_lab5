@@ -70,8 +70,9 @@ weights_and_bias = [1,2,3,4,5,-6,-7, -8,0.5]
 # print(linear_decision(weights_and_bias))
 print(f'Entropy with arbitrary weights and bias: {decision_entropy(weights_and_bias)}')
 
-#result = minimize(decision_entropy, x0=weights_and_bias, method='Powell',bounds=[(-1,1))])
-#print(result)
+result = minimize(decision_entropy, x0=weights_and_bias, method='Nelder-Mead')
+
+print(decision_entropy(result.x))
 
 
 # ___Reflection questions:___
