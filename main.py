@@ -42,11 +42,9 @@ def calc_entropy(group: np.array) -> float:
     negatives = np.sum(group == 'tested_negative')
     total = len(group)
 
-    if (positives == 0): #so log(0) doesnt break anything
-        return -((negatives/total)*np.log2(negatives/total))
-    elif (negatives == 0):
-        return -((positives/total)*np.log2(positives/total))
-
+    if ((positives == 0) or (negatives == 0)): #so log(0) doesnt break anything
+        return 0
+    
     return -((positives/total)*np.log2(positives/total) + (negatives/total)*np.log2(negatives/total))
 
 # write a function that computes the entropy of patient classes in the two groups created by the linear decision threshold
