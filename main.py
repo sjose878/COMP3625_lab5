@@ -83,7 +83,8 @@ print(f'Best x values found: {result.x}')
 
 
 # 2) what effect does b have in the classification?
-
+# If b is increased, there's a higher chance for the patient to be classified as being at risk
+# whi;e if b is decreased, there's a higher change for the patient to be classified as being not at risk.
 
 # 3) what does the model tell us about the relationship between the clinical measurements and diabetes? Which measurements contibute to risk of diabetes, and which reduce it?
 
