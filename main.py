@@ -73,8 +73,8 @@ print(f'Entropy with arbitrary weights and bias: {decision_entropy(weights_and_b
 baseline = calc_entropy(Y)
 print(f'Baseline entropy: {baseline}')
 result = minimize(decision_entropy, x0=weights_and_bias, method='Powell')
-print(result)
-
+print(f'Best entropy found: {result.fun}')
+print(f'Best x values found: {result.x}')
 
 # ___Reflection questions:___
 
