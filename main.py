@@ -80,7 +80,8 @@ print(f'Best x values found: {result.x}')
 # ___Reflection questions:___
 
 # 1) What was the baseline entropy of the whole dataset? What is the entropy after your classifier splits it into two groups?
-
+# The baseline entropy is 0.9331343166407831. 
+# The best entropy we found after our classifier split it is 0.9214376740086433.
 
 # 2) what effect does b have in the classification?
 # If b is increased, there's a higher chance for the patient to be classified as being at risk
